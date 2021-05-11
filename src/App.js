@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import Content from './components/Content';
+import Sidebar from './components/Sidebar';
+import MainContext from './MainContext';
+import BrandsData from './brand.json'
+
 
 function App() {
+
+  const brandsArray = []
+  Object.keys(BrandsData).map(key => {
+      brandsArray.push(BrandsData[key])
+  })
+
+  const [brands, setBrands] = useState(brandsArray)
+  const [selectedBrands, setSelectedBrands]= useState([])
+
+  useEffect(()=> {
+    console.log(selectedBrands)
+  }, [selectedBrands])
+
+  const data = {
+    brands,
+    setSelectedBrands,
+    selectedBrands,
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainContext.Provider value={data}>
+        <Sidebar />
+        <Content />
+      </MainContext.Provider>
+    </>
   );
 }
 

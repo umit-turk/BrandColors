@@ -15,6 +15,7 @@ code {
   list-style: none;
   border: 0;
   outline: 0;
+  text-decoration: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -81,6 +82,13 @@ html, body {
           flex: 1;
   overflow: auto;
   background: #f8f8f8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .header {
@@ -135,6 +143,24 @@ html, body {
   height: 100%;
   font-size: 16px;
   padding: 0 20px 0 60px;
+}
+
+.header .back-btn {
+  background: transparent;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  color: #999;
+}
+
+.header .back-btn svg {
+  display: block;
+  margin-right: 10px;
 }
 
 .header .download {
@@ -211,14 +237,15 @@ html, body {
 }
 
 .brands {
-  padding: 25px;
+  height: calc(100% - 60px);
+  width: 100%;
 }
 
 .brands .brand {
   border: 1px solid #ddd;
   background: #fff;
   padding: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 10px 15px;
 }
 
 .brands .brand h5 {
